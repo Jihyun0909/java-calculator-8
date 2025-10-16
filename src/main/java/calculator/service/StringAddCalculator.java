@@ -1,6 +1,7 @@
 package calculator.service;
 
 import calculator.support.InputParser;
+import calculator.support.Validators;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public final class StringAddCalculator {
             return 0;
         }
         List<String> tokens = InputParser.parseToTokens(input);
-        // 다음 단계에서 검증+합산
-        return 0;
+        List<Integer> numbers = Validators.toValidatedPositiveIntegers(tokens);
+        return numbers.stream().mapToInt(Integer::intValue).sum();
     }
 }
